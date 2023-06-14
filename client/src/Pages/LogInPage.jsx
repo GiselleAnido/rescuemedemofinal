@@ -31,7 +31,7 @@ function LoginPage() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/users/login",
+        "https://rescuemebackend.onrender.com/api/users/login",
         { email, password }
       );
       // check if the response contains a token or some other form of authentication

@@ -27,20 +27,23 @@ const SignUpPage = () => {
   const handleSubmitSignUp = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/users/signup", {
-        name,
-        email,
-        password,
-        passwordConfirm,
-        shelter,
-        city,
-        //   city: "", // Add the city field from the user schema
-        // location: { // Add the location field from the user schema
-        //   type: "Point",
-        //   coordinates: [],
-        //   address: "",
-        //   description: ""
-      });
+      await axios.post(
+        "https://rescuemebackend.onrender.com/api/users/signup",
+        {
+          name,
+          email,
+          password,
+          passwordConfirm,
+          shelter,
+          city,
+          //   city: "", // Add the city field from the user schema
+          // location: { // Add the location field from the user schema
+          //   type: "Point",
+          //   coordinates: [],
+          //   address: "",
+          //   description: ""
+        }
+      );
       setErrorMessage("");
       alert("You are now a registered user");
       updateUser({ name, email, shelter,city });
