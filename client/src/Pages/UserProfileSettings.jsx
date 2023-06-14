@@ -41,7 +41,7 @@ const UserProfileSettings = () => {
       (async () => {
         try {
           const res = await axios.patch(
-            "https://rescuemebackend.onrender.com/users/updateMe",
+            "https://rescuemebackend.onrender.com/api/users/updateMe",
             {
               photo,
             }
@@ -73,7 +73,7 @@ const UserProfileSettings = () => {
     console.log(user);
     try {
       const res = await axios.patch(
-        "https://rescuemebackend.onrender.com/users/updateMe",
+        "https://rescuemebackend.onrender.com/api/users/updateMe",
         {
           name: newName,
         }
@@ -90,7 +90,7 @@ const UserProfileSettings = () => {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        "https://rescuemebackend.onrender.com/users/updateMe",
+        "https://rescuemebackend.onrender.com/api/users/updateMe",
         {
           email: newEmail,
         }
