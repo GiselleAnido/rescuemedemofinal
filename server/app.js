@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:  "https://rescuemedemofinal.vercel.app",
+    origin: "https://rescuemedemofinal.vercel.app",
     credentials: true,
   })
 );
