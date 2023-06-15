@@ -18,7 +18,7 @@
     "xss-clean": "^0.1.1"
   },
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "dotenv -e ./config.env node server.js",
     "start:prod": "NODE_ENV=production nodemon server.js"
   }
 }
