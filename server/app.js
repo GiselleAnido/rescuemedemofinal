@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
-const cors = require("cors");
+
 const cookieParser = require("cookie-parser");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
@@ -15,14 +15,6 @@ const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://rescuemedemofinal.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
 
 
 app.use(cookieParser());

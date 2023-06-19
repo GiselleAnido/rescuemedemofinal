@@ -39,13 +39,14 @@ export const PetContextProvider = ({ children }) => {
   }, []);
 
   const fetchData = async () => {
+    console.log("hiiii");
     setLoading(true);
     setError(null);
     try {
-       console.log("hi");
+       
       const res = await axios.get(
         
-        "https://rescuemebackend.onrender.com/api/pets/"
+        "http://localhost:4000/api/pets/"
       );
       console.log(res)
       setallPets(res.data.data.pets);
