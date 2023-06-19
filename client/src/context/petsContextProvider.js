@@ -39,7 +39,7 @@ export const PetContextProvider = ({ children }) => {
   }, []);
 
   const fetchData = async () => {
-    console.log("hiiii");
+   
     setLoading(true);
     setError(null);
     try {
@@ -57,7 +57,7 @@ export const PetContextProvider = ({ children }) => {
       setError(error);
       
     } finally {
-      console.log("hi");
+     
       setLoading(false);
     }
   };
@@ -69,7 +69,10 @@ export const PetContextProvider = ({ children }) => {
     try {
        
       const res = await axios.get(
-        "https://rescuemebackend.onrender.com/api/users/getMe"
+        "https://rescuemebackend.onrender.com/api/users/getMe",
+        {
+          withCredentials: true,
+        }
       );
 
       console.log("Fetch Me", res.data.data);
@@ -154,7 +157,7 @@ export const PetContextProvider = ({ children }) => {
     setUser(userData);
   };
 
-  console.log(user);
+
 
   return (
     <PetContext.Provider

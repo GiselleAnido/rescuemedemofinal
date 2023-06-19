@@ -35,6 +35,7 @@ console.log("hehdccnbnsnsy")
         "https://rescuemebackend.onrender.com/api/users/login",
         { email, password }
       );
+      console.log(response)
       // check if the response contains a token or some other form of authentication
       if (response.data.user) {
         // save the token in local storage for subsequent requests
@@ -42,7 +43,7 @@ console.log("hehdccnbnsnsy")
         setUser(response.data.user);
         console.log(user);
         // console.log(response.data);
-        handleLogin();
+       
 
         // redirect the user to the dashboard or home page
         window.location.href = "/userprofile";
