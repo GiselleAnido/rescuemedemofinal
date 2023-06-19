@@ -45,8 +45,7 @@ export const PetContextProvider = ({ children }) => {
     try {
        
       const res = await axios.get(
-        
-        "http://localhost:4000/api/pets/"
+        "https://rescuemebackend.onrender.com/api/pets/"
       );
       console.log(res)
       setallPets(res.data.data.pets);
@@ -93,7 +92,7 @@ export const PetContextProvider = ({ children }) => {
     setError(null);
     try {
       const { data } = await axios.get(
-        "https://rescuemebackend.onrender.com/api/pets/random/"
+        "https://rescuemebackend.onrender.com/api/pets/random"
       );
 
       setRandomPets(data);
