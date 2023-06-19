@@ -15,23 +15,14 @@ const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
-app.use((req, res, next) => {
-  // Set appropriate CORS headers based on your requirements
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://rescuemedemofinal.vercel.app"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-
-  // Handle preflight requests
-  if (req.method === "OPTIONS") {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
+app.use(
+  cors({
+    origin: "https://rescuemedemofinal.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 
 app.use(cookieParser());

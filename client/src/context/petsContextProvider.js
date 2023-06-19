@@ -42,21 +42,32 @@ export const PetContextProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
+       console.log("hi");
       const res = await axios.get(
+        
         "https://rescuemebackend.onrender.com/api/pets/"
       );
+      console.log(res)
       setallPets(res.data.data.pets);
-      console.log(res);
-    } catch (error) {
+      console.log("this is your new err", res);
+    } catch (error) { 
+      console.log(error);
+      console.log("hi");
+      console.log(error.response);
       setError(error);
+      
     } finally {
+      console.log("hi");
       setLoading(false);
     }
   };
 
   const fetchMe = async () => {
+    
     setLoading(true);
+   
     try {
+       
       const res = await axios.get(
         "https://rescuemebackend.onrender.com/api/users/getMe"
       );
@@ -67,9 +78,12 @@ export const PetContextProvider = ({ children }) => {
       handleLogin();
     } catch (error) {
       console.log(error);
+     
       handleLogout();
     } finally {
+      
       setLoading(false);
+       
     }
   };
 

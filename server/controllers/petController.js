@@ -88,6 +88,7 @@ exports.randomPets = async (req, res, next) => {
 
 exports.getAllPets = async (req, res, next) => {
   try {
+    console.log("heee");
     const features = new APIQueries(Pet.find(), req.query)
       .filter()
       .sort()
@@ -95,7 +96,7 @@ exports.getAllPets = async (req, res, next) => {
       .paginate();
 
     const pets = await features.query;
-
+console.log(pets);
     res.status(200).json({
       status: "success",
       results: pets.length,
