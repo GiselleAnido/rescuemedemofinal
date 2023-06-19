@@ -39,12 +39,13 @@ console.log("hehdccnbnsnsy")
       // check if the response contains a token or some other form of authentication
       if (response.data.user) {
         // save the token in local storage for subsequent requests
-
+        console.log(user);
+           console.log(response);
         setUser(response.data.user);
         console.log(user);
         // console.log(response.data);
         handleLogin();
-
+console.log("jwdxsnnqajxml d.simlwed")
         // redirect the user to the dashboard or home page
         window.location.href = "/userprofile";
       } else {

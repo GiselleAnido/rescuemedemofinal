@@ -108,8 +108,8 @@ exports.protect = async (req, res, next) => {
 
      // Check if token exists in cookies
 
-     if (req.cookies && req.cookies.token) {
-       token = req.cookies.token;
+     if (req.cookies && req.cookies.jwt) {
+       token = req.cookies.jwt ;
      }
 
 
