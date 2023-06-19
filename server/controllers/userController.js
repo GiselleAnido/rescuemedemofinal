@@ -52,9 +52,7 @@ exports.getUser = async (req, res) => {
 
 exports.getMe = async (req, res, next) => {
   try {
-    console.log(user)
-    
-    console.log(req.user._id);
+   
      const user = await User.findById(req.user._id)
        .populate({
          path: "favorites",
@@ -64,7 +62,9 @@ exports.getMe = async (req, res, next) => {
          path: "pets",
          select: "-__v",
        });
+ console.log(user);
 
+ console.log(req.user._id);
      res.status(200).json({
        status: "success",
        data: {
@@ -72,7 +72,7 @@ exports.getMe = async (req, res, next) => {
        },
      });
    } catch (err) {
-     next(new Error ("hddjskjanmasnmjckd"))
+      next(err)
    }
 }
 

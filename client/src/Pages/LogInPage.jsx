@@ -43,7 +43,7 @@ console.log("hehdccnbnsnsy")
         setUser(response.data.user);
         console.log(user);
         // console.log(response.data);
-       
+        handleLogin();
 
         // redirect the user to the dashboard or home page
         window.location.href = "/userprofile";
