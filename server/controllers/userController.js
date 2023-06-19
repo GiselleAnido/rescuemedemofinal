@@ -51,7 +51,10 @@ exports.getUser = async (req, res) => {
 };
 
 exports.getMe = async (req, res, next) => {
-   try {
+  try {
+    console.log(user)
+    
+    console.log(req.user._id);
      const user = await User.findById(req.user._id)
        .populate({
          path: "favorites",
@@ -69,7 +72,7 @@ exports.getMe = async (req, res, next) => {
        },
      });
    } catch (err) {
-     next(err)
+     next(new Error ("hddjskjanmasnmjckd"))
    }
 }
 

@@ -48,7 +48,7 @@ const PetCard = ({ pet, rdmpet }) => {
     const checkIfFavorite = async () => {
       try {
         const response = await axios.get(
-          `https://rescuemebackend.onrender.com/api/users/getMe`
+          "https://rescuemebackend.onrender.com/api/users/getMe"
         );
         const favorites = response.data.data.user.favorites.map(
           (pet) => pet._id

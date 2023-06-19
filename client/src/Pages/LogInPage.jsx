@@ -22,14 +22,15 @@ function LoginPage() {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
-
+console.log("hehdccnbnsnsy")
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
   const handleSubmitLogin = async (event) => {
+    console.log("1")
     event.preventDefault();
-    try {
+    try { console.log("2");
       const response = await axios.post(
         "https://rescuemebackend.onrender.com/api/users/login",
         { email, password }
