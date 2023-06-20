@@ -19,11 +19,11 @@ const UserProfile = () => {
     return <p>Loading user data...</p>;
   }
 
-  const addedPets = user.user?.pets || [];
-  const favorites = user.user?.favorites || [];
+  const addedPets = user?.pets || [];
+  const favorites = user?.favorites || [];
 
   // Check if user and photoURL are defined before accessing them
-  const userPhotoURL = user.user && user.user.photoURL;
+  const userPhotoURL = user && user.photoURL;
 
   return (
     <div className="user-profile">
