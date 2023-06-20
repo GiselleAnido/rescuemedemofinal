@@ -35,7 +35,7 @@ const UserProfile = () => {
           </div>
           <div className="user-details">
             <div className="go-to-settings">
-              <h1>{user.user.name}</h1>
+              <h1>{user.name}</h1>
             <h4 className="checkboxes-userprofile"> User: {user.user.shelter ? <h4>Shelter</h4> : null} </h4>
             <h4 className="city-name capitalize checkboxes-userprofile"> City: <h4>{user.user.city}</h4></h4>
 
