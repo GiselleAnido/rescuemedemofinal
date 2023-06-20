@@ -77,22 +77,25 @@ const GiveForAdoptionForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://rescuemebackend.onrender.com/api/pets", {
-        user: user._id,
-        vaccinated,
-        sterilized,
-        name,
-        type,
-        breed,
-        age,
-        size,
-        gender,
-        color,
-        city,
-        goodWith,
-        description,
-        photo: photoURL,
-      });
+      const response = await axios.post(
+        "https://rescuemebackend.onrender.com/api/pets/",
+        {
+          user: user._id,
+          vaccinated,
+          sterilized,
+          name,
+          type,
+          breed,
+          age,
+          size,
+          gender,
+          color,
+          city,
+          goodWith,
+          description,
+          photo: photoURL,
+        }
+      );
       console.log(response);
 
       if (response.status < 300) {
