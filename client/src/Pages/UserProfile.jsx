@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { Button } from "react-bootstrap";
 import "../styles/UserProfile.scss";
@@ -7,13 +8,18 @@ import PetCard from "../components/PetCard";
 
 const UserProfile = () => {
   const { user, loading } = useContext(PetContext);
+    const navigate = useNavigate();
 
   console.log("user:", user);
   console.log("loading:", loading);
 
   const handleSettings = () => {
-    window.location.href = "/userprofilesettings"; // Navigate to settings page
+   navigate("/userprofilesettings"); // Navigate to settings page
   };
+   const handleAdoptionClick = () => {
+     navigate("/giveforadoption");
+   };
+
 
   if (!user || loading) {
     return <p>Loading user data...</p>;
@@ -36,8 +42,14 @@ const UserProfile = () => {
           <div className="user-details">
             <div className="go-to-settings">
               <h1>{user.name}</h1>
-            <h4 className="checkboxes-userprofile"> User: {user.shelter ? <h4>Shelter</h4> : null} </h4>
-            <h4 className="city-name capitalize checkboxes-userprofile"> City: <h4>{user.city}</h4></h4>
+              <h4 className="checkboxes-userprofile">
+                {" "}
+                User: {user.shelter ? <h4>Shelter</h4> : null}{" "}
+              </h4>
+              <h4 className="city-name capitalize checkboxes-userprofile">
+                {" "}
+                City: <h4>{user.city}</h4>
+              </h4>
 
               <Button
                 className="settings-button"
@@ -86,7 +98,7 @@ const UserProfile = () => {
         <Button
           type="submit"
           className="btn_adoption"
-          href={"/giveforadoption"}
+          onClick={handleAdoptionClick}
         >
           Click here
         </Button>

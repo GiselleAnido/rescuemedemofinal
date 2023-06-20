@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 /* import { useContext } from "react";
 import PetContext from "../context/petsContextProvider"; */
 
@@ -15,8 +16,14 @@ import PetContext from "../context/petsContextProvider"; */
 
 const PetProfile = () => {
   const { state } = useLocation();
+     const navigate = useNavigate();
   const pet = state;
   console.log(pet);
+
+   const handleAdoptMeClick = () => {
+     navigate("/adoptionprocess");
+   };
+  
   return (
     <Container className="pet-profile-cont">
       <div className="pet-profile-info">
@@ -44,7 +51,7 @@ const PetProfile = () => {
             {pet.city.charAt(0).toUpperCase() + pet.city.slice(1).toLowerCase()}
             , Germany
           </h4>
-          <Button className="btn_lgr" href={"/adoptionprocess"}>
+          <Button className="btn_lgr" onClick={handleAdoptMeClick}>
             Adopt me
           </Button>
         </div>
