@@ -39,10 +39,10 @@ function LoginPage() {
       // check if the response contains a token or some other form of authentication
       if (response.data.user) {
         // save the token in local storage for subsequent requests
-        console.log(user);
-           console.log(response);
+       
+           
         setUser(response.data.user);
-        console.log(user);
+        console.log(setUser);
         // console.log(response.data);
         handleLogin();
 console.log("jwdxsnnqajxml d.simlwed")
