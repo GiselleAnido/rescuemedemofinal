@@ -22,7 +22,7 @@ function LoginPage() {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
-console.log("hehdccnbnsnsy")
+
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
@@ -47,7 +47,7 @@ console.log("hehdccnbnsnsy")
         handleLogin();
 console.log("jwdxsnnqajxml d.simlwed")
         // redirect the user to the dashboard or home page
-        window.location.href = "/userprofile";
+        //window.location.href = "/userprofile";
       } else {
         // display an error message to the user
         setErrorMessage("Invalid email or password");
