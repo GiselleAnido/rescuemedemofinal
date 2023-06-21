@@ -45,8 +45,15 @@ const PetCard = ({ pet, rdmpet }) => {
   };
 
   useEffect(() => {
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [favorite, setFavorite] = useState(false);
+
     const checkIfFavorite = async () => {
       try {
+ if (!isLoggedIn) {
+   return;
+ }
+
         const response = await axios.get(
           "https://rescuemebackend.onrender.com/api/users/getMe"
         );
@@ -58,8 +65,15 @@ const PetCard = ({ pet, rdmpet }) => {
         console.error(error);
       }
     };
-    checkIfFavorite();
-  }, [displayPet._id]);
+
+    useEffect(() => {
+  checkIfFavorite();
+}, [displayPet._id, isLoggedIn]);
+
+
+    const handleLogin = () => {
+  setIsLoggedIn(true);
+};
 
   const handleCardClick = () => {
     navigate("/petprofile", { state: displayPet });

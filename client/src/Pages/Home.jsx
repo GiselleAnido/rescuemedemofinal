@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import FactsCarousel from "../components/FactsCarousel";
 import MeetThemContainer from "../components/MeetThemContainer";
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -7,6 +8,12 @@ import { motion } from "framer-motion";
 
 
 const Home = () => {
+   const navigate = useNavigate();
+
+    const handleCheckMoreClick = () => {
+      navigate("/giveforadoption");
+    };
+
   return (
     <Container fluid className="cont">
       <Col>
@@ -46,7 +53,7 @@ const Home = () => {
               <Col className="meet_them">
                 <MeetThemContainer />
                 <div className="div-btn-lgr">
-                  <Button className="btn_lgr" href={"/petsearch"}>
+                  <Button className="btn_lgr" onClick={handleCheckMoreClick}>
                     Check more
                   </Button>
                 </div>
