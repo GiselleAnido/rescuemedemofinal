@@ -1,22 +1,50 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
 import PetContext from "../context/petsContextProvider";
 import axios from "axios";
 
 const PetCard = ({ pet, rdmpet }) => {
   const displayPet = rdmpet || pet;
-  const [favorite, setFavorite] = useState(false);
   const { user, setUser } = useContext(PetContext);
   const navigate = useNavigate();
+  const [favorite, setFavorite] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkIfFavorite = async () => {
+    try {
+      if (!isLoggedIn) {
+        return;
+      }
+
+      const response = await axios.get(
+        "https://rescuemebackend.onrender.com/api/users/getMe"
+      );
+      const favorites = response.data.data.user.favorites.map((pet) => pet._id);
+      setFavorite(favorites.includes(displayPet._id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    checkIfFavorite();
+  }, [displayPet._id, isLoggedIn]);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleCardClick = () => {
+    navigate("/petprofile", { state: displayPet });
+  };
 
   const FavHandler = async (e) => {
     if (!favorite) {
-       e.stopPropagation();
+      e.stopPropagation();
       try {
         const response = await axios.post(
-          `https://rescuemebackend.onrender.com/api/users/favorites`,
+          "https://rescuemebackend.onrender.com/api/users/favorites",
           {
             petId: displayPet._id,
           }
@@ -29,7 +57,7 @@ const PetCard = ({ pet, rdmpet }) => {
     } else {
       try {
         const res = await axios.delete(
-          `https://rescuemebackend.onrender.com/api/users/favorites`,
+          "https://rescuemebackend.onrender.com/api/users/favorites",
           {
             data: {
               petId: displayPet._id,
@@ -42,41 +70,6 @@ const PetCard = ({ pet, rdmpet }) => {
         console.error(error);
       }
     }
-  };
-
-  useEffect(() => {
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-const [favorite, setFavorite] = useState(false);
-
-    const checkIfFavorite = async () => {
-      try {
- if (!isLoggedIn) {
-   return;
- }
-
-        const response = await axios.get(
-          "https://rescuemebackend.onrender.com/api/users/getMe"
-        );
-        const favorites = response.data.data.user.favorites.map(
-          (pet) => pet._id
-        );
-        setFavorite(favorites.includes(displayPet._id));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    useEffect(() => {
-  checkIfFavorite();
-}, [displayPet._id, isLoggedIn]);
-
-
-    const handleLogin = () => {
-  setIsLoggedIn(true);
-};
-
-  const handleCardClick = () => {
-    navigate("/petprofile", { state: displayPet });
   };
 
   return (
