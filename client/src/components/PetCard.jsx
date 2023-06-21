@@ -40,6 +40,8 @@ const PetCard = ({ pet, rdmpet }) => {
   };
 
   const FavHandler = async (e) => {
+    console.log(user)
+    console.log(pet)
     if (!favorite) {
       e.stopPropagation();
       try {
