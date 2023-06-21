@@ -49,6 +49,7 @@ const PetCard = ({ pet, rdmpet }) => {
             petId: displayPet._id,
           }
         );
+        console.log(response)
         setUser(response.data);
         setFavorite(true);
       } catch (error) {

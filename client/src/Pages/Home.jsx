@@ -11,7 +11,7 @@ const Home = () => {
    const navigate = useNavigate();
 
     const handleCheckMoreClick = () => {
-      navigate("/giveforadoption");
+      navigate("/petsearch");
     };
 
   return (

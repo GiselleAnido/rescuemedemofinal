@@ -95,11 +95,7 @@ const UserProfile = () => {
       <div className="give-for-adoption">
         <h4>Give for adoption</h4>
 
-        <Button
-          type="submit"
-          className="btn_adoption"
-          onClick={handleAdoptionClick}
-        >
+        <Button type="submit" className="btn_lgr" onClick={handleAdoptionClick}>
           Click here
         </Button>
       </div>
