@@ -49,7 +49,7 @@ const PetCard = ({ pet, rdmpet }) => {
         const response = await axios.post(
           "https://rescuemebackend.onrender.com/api/users/favorites",
           {
-            petId: pet.id,
+            petId: displayPet._id,
           }
         );
         console.log(response)

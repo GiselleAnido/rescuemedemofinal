@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-/* import { useContext } from "react";
-import PetContext from "../context/petsContextProvider"; */
+import { useContext } from "react";
+import PetContext from "../context/petsContextProvider"; 
 
 //carousel with photos of the actual searched pet
 //Pet name
@@ -15,9 +15,11 @@ import PetContext from "../context/petsContextProvider"; */
 // adopt me button
 
 const PetProfile = () => {
-  const { state } = useLocation();
+ const { pet} = useContext(PetContext);
+
+  //const { state } = useLocation();
      const navigate = useNavigate();
-  const pet = state;
+ // const pet = state;
   console.log(pet);
 
    const handleAdoptMeClick = () => {
