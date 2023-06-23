@@ -42,13 +42,14 @@ const PetCard = ({ pet, rdmpet }) => {
   const FavHandler = async (e) => {
     console.log(user)
     console.log(pet)
+    console.log(displayPet._id)
     if (!favorite) {
       e.stopPropagation();
       try {
         const response = await axios.post(
           "https://rescuemebackend.onrender.com/api/users/favorites",
           {
-            petId: displayPet._id,
+            petId: pet.id,
           }
         );
         console.log(response)
