@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import PetContext from "../context/petsContextProvider"; 
+import axios from "axios";
+
+
+
 
 //carousel with photos of the actual searched pet
 //Pet name
@@ -19,8 +23,27 @@ const PetProfile = () => {
 
   const { state } = useLocation();
      const navigate = useNavigate();
- const pet = state;
+
+
+   const [pet, setPet] = useState(null);
+
+   useEffect(() => {
+     const fetchPet = async () => {
+       try {
+         const response = await axios.get(
+           `https://rescuemebackend.onrender.com/api/pets/${state.id}`
+         );
+         const pet = response.data.pet;
+
   console.log(pet);
+         setPet(pet);
+       } catch (error) {
+         console.log(error);
+       }
+     };
+
+     fetchPet();
+   }, [state.id]);
 
    const handleAdoptMeClick = () => {
      navigate("/adoptionprocess");
