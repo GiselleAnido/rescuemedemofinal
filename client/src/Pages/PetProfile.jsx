@@ -15,11 +15,11 @@ import PetContext from "../context/petsContextProvider";
 // adopt me button
 
 const PetProfile = () => {
- const { pet} = useContext(PetContext);
 
-  //const { state } = useLocation();
+
+  const { state } = useLocation();
      const navigate = useNavigate();
- // const pet = state;
+ const pet = state;
   console.log(pet);
 
    const handleAdoptMeClick = () => {
