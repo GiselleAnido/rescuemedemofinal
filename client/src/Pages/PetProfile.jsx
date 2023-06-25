@@ -51,8 +51,7 @@ console.log(pet)
         <div className="pet-profile-data">
           <h2>
             <strong>
-              {pet.name.charAt(0).toUpperCase() +
-                pet.name.slice(1).toLowerCase()}
+              pet.name || pet.data.pet.name 
             </strong>
           </h2>
           <h4>Shelter</h4>
