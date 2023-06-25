@@ -60,7 +60,7 @@ const GiveForAdoptionForm = () => {
 
   axios.defaults.withCredentials = true;
 
-  console.log("User object in component:", user);
+  
 
   const handleUploadPetPhoto = async (event) => {
     const file = event.target.files[0];
@@ -75,7 +75,7 @@ const GiveForAdoptionForm = () => {
   const handleSubmitGiveForAdoptionForm = async (event) => {
     event.preventDefault();
     setLoading(true);
-
+console.log("heee")
     try {
       const response = await axios.post(
         "https://rescuemebackend.onrender.com/api/pets/",
@@ -94,7 +94,8 @@ const GiveForAdoptionForm = () => {
           goodWith,
           description,
           photo: photoURL,
-        }
+        },
+        {withCredentials: true}
       );
       console.log(response);
 
@@ -250,7 +251,7 @@ const GiveForAdoptionForm = () => {
 
         <div className="submit-button-form">
           <Button
-            className="btn_adoption"
+           
             disabled={loading}
             type="submit"
             className="btn_sml"
