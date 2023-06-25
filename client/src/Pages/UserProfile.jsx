@@ -13,26 +13,28 @@ const UserProfile = () => {
   const [favorites, setFavorites] = useState([]);
   const [addedPets, setAddedPets] = useState([]);
 
-  const getUserData = async (userId) => {
-    try {
-      const response = await axios.get(
-        `https://rescuemebackend.onrender.com/api/users/${userId}`
-      );
-      const userData = response.data;
-      setFavorites(userData.favorites);
-      setAddedPets(userData.pets);
-      console.log(response);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    if (user) {
-      getUserData(user._id);
-    }
-  }, [user]);
+    const fetchUserData = async () => {
+      console.log(user._id)
+      try {
+        const response = await axios.get(
+          "https://rescuemebackend.onrender.com/api/users/getMe",
+           {
+          withCredentials: true,
+        }
+        );
+        const userData = response.data;
+        setFavorites(userData.favorites);
+        setAddedPets(userData.addedPets);
+        console.log(response);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };  
+
+    fetchUserData();
+  }, []);
 
   console.log("user:", user);
   console.log("loading:", loading);

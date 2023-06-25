@@ -49,7 +49,7 @@ export const PetContextProvider = ({ children }) => {
       );
       console.log(res)
       setallPets(res.data.data.pets);
-      console.log("this is your new err", res);
+      
     } catch (error) { 
       console.log(error);
       console.log("hi");
