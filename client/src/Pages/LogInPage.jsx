@@ -47,7 +47,7 @@ function LoginPage() {
      
         
         handleLogin();
-fetchMe();
+
         // redirect the user to the dashboard or home page
     
 
