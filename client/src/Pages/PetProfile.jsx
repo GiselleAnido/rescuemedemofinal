@@ -27,7 +27,7 @@ const PetProfile = () => {
     let location = useLocation();
     let pet = location.state;
 
-
+console.log(pet)
 
   if (!pet) {
     return <div>Loading...</div>;
