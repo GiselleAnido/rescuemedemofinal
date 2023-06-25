@@ -74,26 +74,23 @@ const UserProfileSettings = () => {
 
 
   const handleSaveName = async (e) => {
-    e.preventDefault();
-    console.log(user)
-    try {
-      const res = await axios.patch(
-        "https://rescuemebackend.onrender.com/api/users/updateMe",
-        { name: newName },
-        { withCredentials: true }
-      );
-      console.log(newName)
-      console.log(res.data.data);
-      setUser((prevState) => ({
-        ...prevState,
-        name: res.data.data.name,
-      }));
-      setNewName(res.data.data.name);
-      fetchMe();
-      navigate("/userprofile");
-    } catch (err) {
-      console.log(err);
-    }
+   e.preventDefault();
+   try {
+     const res = await axios.patch(
+       "https://rescuemebackend.onrender.com/api/users/updateMe",
+       { name: newName },
+       { withCredentials: true }
+     );
+     console.log(res.data.data);
+     setUser((prevUser) => ({
+       ...prevUser,
+       name: res.data.data.name,
+     }));
+     setNewName(res.data.data.name);
+     navigate("/userprofile");
+   } catch (err) {
+     console.log(err);
+   }
   };
 
   const handleSaveEmail = async (e) => {
