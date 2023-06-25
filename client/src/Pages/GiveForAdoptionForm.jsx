@@ -56,7 +56,7 @@ const GiveForAdoptionForm = () => {
   // errorMessage is defined to store any error message that may occur during the sign-up process
   const [sterilized, setSterilized] = useState("");
   const [vaccinated, setVaccinated] = useState("false");
-  const { user, setUser, fetchMe } = useContext(PetContext);
+  const { user, setUser, fetchMe, updateMe } = useContext(PetContext);
 
   axios.defaults.withCredentials = true;
 
@@ -106,7 +106,7 @@ console.log("heee")
         alert(
           "Thank you for your trust! We hope to find a home for your pet soon!"
         );
-        fetchMe();
+        updateMe();
         navigate("/userprofile");
       } else {
         setLoading(false);
