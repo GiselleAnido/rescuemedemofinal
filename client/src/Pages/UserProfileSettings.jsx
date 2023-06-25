@@ -82,7 +82,7 @@ const UserProfileSettings = () => {
       );
       console.log(res.data.data);
       setUser(res.data.data);
-      handleNameChange()
+       setNewName(res.data.data.name);
     } catch (err) {
       console.log(err);
     }
