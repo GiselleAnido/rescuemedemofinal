@@ -34,7 +34,7 @@ const PetProfile = () => {
          const response = await axios.get(
            `https://rescuemebackend.onrender.com/api/pets/${state.id}`
          );
-         const pet = response.data.pet;
+         const pet = response.data.data.pet;
 console.log (response)
   console.log(pet);
          setPet(pet);
@@ -44,7 +44,7 @@ console.log (response)
      };
 
      fetchPet();
-   }, [state.id]);
+   }, [state.pet._id]);
 
    const handleAdoptMeClick = () => {
      navigate("/adoptionprocess");
