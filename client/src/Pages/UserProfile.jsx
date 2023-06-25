@@ -27,6 +27,8 @@ const UserProfile = () => {
 
   const addedPets = user?.pets || [];
   const favorites = user?.favorites || [];
+  console.log(favorites)
+  console.log(addedPets)
 
   // Check if user and photoURL are defined before accessing them
   const userPhotoURL = user && user.photoURL;
