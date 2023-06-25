@@ -1,34 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { Button } from "react-bootstrap";
 import "../styles/UserProfile.scss";
 import PetContext from "../context/petsContextProvider";
 import PetCard from "../components/PetCard";
+import axios from "axios";
 
 const UserProfile = () => {
   const { user, loading } = useContext(PetContext);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [favorites, setFavorites] = useState([]);
+  const [addedPets, setAddedPets] = useState([]);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("https://rescuemebackend.onrender.com/api/users/getMe");
+        const userData = response.data;
+        setFavorites(userData.favorites);
+        setAddedPets(userData.addedPets);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   console.log("user:", user);
   console.log("loading:", loading);
+  console.log(favorites);
+  console.log(addedPets);
 
   const handleSettings = () => {
-   navigate("/userprofilesettings"); // Navigate to settings page
+    navigate("/userprofilesettings"); // Navigate to settings page
   };
-   const handleAdoptionClick = () => {
-     navigate("/giveforadoption");
-   };
 
+  const handleAdoptionClick = () => {
+    navigate("/giveforadoption");
+  };
 
   if (!user || loading) {
     return <p>Loading user data...</p>;
   }
-
-  const addedPets = user?.pets || [];
-  const favorites = user?.favorites || [];
-  console.log(favorites)
-  console.log(addedPets)
 
   // Check if user and photoURL are defined before accessing them
   const userPhotoURL = user && user.photoURL;
