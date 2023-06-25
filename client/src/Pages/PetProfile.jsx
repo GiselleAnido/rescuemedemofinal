@@ -32,7 +32,7 @@ const PetProfile = () => {
      const fetchPet = async () => {
        try {
          const response = await axios.get(
-           `https://rescuemebackend.onrender.com/api/pets/${state.id}`
+           `https://rescuemebackend.onrender.com/api/pets/${state.pet._id}`
          );
          const pet = response.data.data.pet;
 console.log (response)
