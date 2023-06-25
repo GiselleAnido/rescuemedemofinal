@@ -8,53 +8,31 @@ import PetCard from "../components/PetCard";
 import axios from "axios";
 
 const UserProfile = () => {
-  const { user, loading } = useContext(PetContext);
-  const navigate = useNavigate();
-  const [favorites, setFavorites] = useState([]);
-  const [addedPets, setAddedPets] = useState([]);
+   const { user, loading } = useContext(PetContext);
+   const [localUser, setLocalUser] = useState(user);
+   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      console.log(user._id)
-      try {
-        const response = await axios.get(
-          "https://rescuemebackend.onrender.com/api/users/getMe",
-           {
-          withCredentials: true,
-        }
-        );
-        const userData = response.data;
-        setFavorites(userData.favorites);
-        setAddedPets(userData.addedPets);
-        console.log(response);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };  
+   useEffect(() => {
+     setLocalUser(user);
+   }, [user]);
+   console.log("user:", localUser);
+   console.log("loading:", loading);
 
-    fetchUserData();
-  }, []);
+   const handleSettings = () => {
+     navigate("/userprofilesettings"); // Navigate to settings page
+   };
+   const handleAdoptionClick = () => {
+     navigate("/giveforadoption");
+   };
 
-  console.log("user:", user);
-  console.log("loading:", loading);
-  console.log(favorites);
-  console.log(addedPets);
+   if (!localUser || loading) {
+     return <p>Loading user data...</p>;
+   }
 
-  const handleSettings = () => {
-    navigate("/userprofilesettings"); // Navigate to settings page
-  };
-
-  const handleAdoptionClick = () => {
-    navigate("/giveforadoption");
-  };
-
-  if (!user || loading) {
-    return <p>Loading user data...</p>;
-  }
-
-  // Check if user and photoURL are defined before accessing them
-  const userPhotoURL = user && user.photoURL;
+   const addedPets = localUser.user?.pets || [];
+   const favorites = localUser.user?.favorites || [];
+   // Check if user and photoURL are defined before accessing them
+   const userPhotoURL = localUser.user && localUser.user.photoURL;
 
   return (
     <div className="user-profile">
@@ -69,7 +47,7 @@ const UserProfile = () => {
               <h1>{user.name}</h1>
               <h4 className="checkboxes-userprofile">
                 {" "}
-                User: {user.shelter ? <h4>Shelter</h4> : null}{" "}
+               {user.shelter ? <h4>Shelter</h4> : null}{" "}
               </h4>
               <h4 className="city-name capitalize checkboxes-userprofile">
                 {" "}

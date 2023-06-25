@@ -48,7 +48,7 @@ function LoginPage() {
         handleLogin();
 
         // redirect the user to the dashboard or home page
-        //window.location.href = "/userprofile";
+    
 
          navigate("/userprofile");
       } else {
