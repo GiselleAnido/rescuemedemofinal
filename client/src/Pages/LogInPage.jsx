@@ -30,6 +30,7 @@ function LoginPage() {
   const handleSubmitLogin = async (event) => {
    
     event.preventDefault();
+    
     try { 
       const response = await axios.post(
         "https://rescuemebackend.onrender.com/api/users/login",
