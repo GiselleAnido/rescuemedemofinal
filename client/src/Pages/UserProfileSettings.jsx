@@ -73,16 +73,20 @@ const UserProfileSettings = () => {
     e.preventDefault();
     console.log(user);
     try {
-      const res = await axios.patch(
-        "https://rescuemebackend.onrender.com/api/users/updateMe",
-        { withCredentials: true },
-        {
-          name: newName,
-        }
-      );
-      console.log(res.data.data);
-      setUser(res.data.data);
-       setNewName(res.data.data.name);
+        const res = await axios.patch(
+          "https://rescuemebackend.onrender.com/api/users/updateMe",
+          { name: newName },
+          { withCredentials: true }
+        );
+        console.log(res.data.data);
+        setUser((prevState) => ({
+          ...prevState,
+          user: {
+            ...prevState.user,
+            name: res.data.data.name,
+          },
+        }));
+        setNewName(res.data.data.name);
     } catch (err) {
       console.log(err);
     }
