@@ -71,22 +71,20 @@ const UserProfileSettings = () => {
 
   const handleSaveName = async (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log(user)
     try {
-        const res = await axios.patch(
-          "https://rescuemebackend.onrender.com/api/users/updateMe",
-          { name: newName },
-          { withCredentials: true }
-        );
-        console.log(res.data.data);
-        setUser((prevState) => ({
-          ...prevState,
-          user: {
-            ...prevState.user,
-            name: res.data.data.name,
-          },
-        }));
-        setNewName(res.data.data.name);
+      const res = await axios.patch(
+        "https://rescuemebackend.onrender.com/api/users/updateMe",
+        { name: newName },
+        { withCredentials: true }
+      );
+      console.log(newName)
+      console.log(res.data.data);
+      setUser((prevState) => ({
+        ...prevState,
+        name: res.data.data.name,
+      }));
+      setNewName(res.data.data.name);
     } catch (err) {
       console.log(err);
     }
