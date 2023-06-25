@@ -77,6 +77,7 @@ const GiveForAdoptionForm = () => {
     setLoading(true);
 console.log("heee")
     try {
+      console.log(user._id)
       const response = await axios.post(
         "https://rescuemebackend.onrender.com/api/pets/",
         {
