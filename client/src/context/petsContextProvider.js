@@ -22,7 +22,9 @@ export const PetContextProvider = ({ children }) => {
   };
   const handleLogout = async () => {
     try {
-      await axios.get("https://rescuemebackend.onrender.com/api/users/logout");
+      await axios.get("https://rescuemebackend.onrender.com/api/users/logout", {
+        withCredentials: true,
+      });
       setIsLoggedIn(false);
     } catch (error) {
       console.log(error);
@@ -45,7 +47,8 @@ export const PetContextProvider = ({ children }) => {
     try {
        
       const res = await axios.get(
-        "https://rescuemebackend.onrender.com/api/pets/"
+        "https://rescuemebackend.onrender.com/api/pets/",
+        { withCredentials: true }
       );
       console.log(res)
       setallPets(res.data.data.pets);
@@ -143,6 +146,7 @@ export const PetContextProvider = ({ children }) => {
     try {
       const res = await axios.patch(
         "https://rescuemebackend.onrender.com/api/users/updateMe",
+        { withCredentials: true },
         { name: newName, email: newEmail }
       );
       setUser(res.data.data);

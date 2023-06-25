@@ -97,22 +97,7 @@ console.log("heee")
           photo: photoURL,
         },
         { withCredentials: true },
-        console.log({
-          user: user._id,
-          vaccinated,
-          sterilized,
-          name,
-          type,
-          breed,
-          age,
-          size,
-          gender,
-          color,
-          city,
-          goodWith,
-          description,
-          photo: photoURL,
-        })
+        
       );
       console.log(response);
 

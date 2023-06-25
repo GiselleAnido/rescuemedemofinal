@@ -9,7 +9,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 function LoginPage() {
-  const { user, setUser, handleLogin } = useContext(PetContext);
+  const { user, setUser, handleLogin , fetchMe} = useContext(PetContext);
 
   // console.log(user);
   // console.log(user.user.favorites)
@@ -34,7 +34,8 @@ function LoginPage() {
     try { 
       const response = await axios.post(
         "https://rescuemebackend.onrender.com/api/users/login",
-        { email, password }
+        { email, password },
+        { withCredentials: true }
       );
       console.log(response)
       // check if the response contains a token or some other form of authentication
@@ -46,7 +47,7 @@ function LoginPage() {
      
         
         handleLogin();
-
+fetchMe();
         // redirect the user to the dashboard or home page
     
 

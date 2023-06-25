@@ -42,6 +42,7 @@ const UserProfileSettings = () => {
         try {
           const res = await axios.patch(
             "https://rescuemebackend.onrender.com/api/users/updateMe",
+            { withCredentials: true },
             {
               photo,
             }
@@ -74,6 +75,7 @@ const UserProfileSettings = () => {
     try {
       const res = await axios.patch(
         "https://rescuemebackend.onrender.com/api/users/updateMe",
+        { withCredentials: true },
         {
           name: newName,
         }
@@ -91,6 +93,7 @@ const UserProfileSettings = () => {
     try {
       const res = await axios.patch(
         "https://rescuemebackend.onrender.com/api/users/updateMe",
+        { withCredentials: true },
         {
           email: newEmail,
         }
@@ -105,7 +108,7 @@ const UserProfileSettings = () => {
   const handleDeleteProfile = async () => {
     try {
       const res = await axios.delete(
-        "https://rescuemebackend.onrender.com/api/users/deleteMe"
+        "https://rescuemebackend.onrender.com/api/users/deleteMe",{ withCredentials: true}
       );
       console.log("Res _> ", res);
       setUser(null);
