@@ -28,8 +28,8 @@ const PetProfile = () => {
     let pet = location.state;
 
 console.log(pet)
-  console.log(pet.name)
-  console.log(pet.data.pet.name)
+  
+
   if (!pet) {
     return <div>Loading...</div>;
   }
