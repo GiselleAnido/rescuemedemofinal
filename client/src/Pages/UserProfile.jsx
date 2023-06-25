@@ -29,8 +29,11 @@ const UserProfile = () => {
      return <p>Loading user data...</p>;
    }
 
-   const addedPets = localUser.user?.pets || [];
-   const favorites = localUser.user?.favorites || [];
+   const addedPets = localUser?.pets || [];
+  const favorites = localUser?.favorites || [];
+  
+  console.log(favorites)
+  console.log(addedPets)
    // Check if user and photoURL are defined before accessing them
    const userPhotoURL = localUser.user && localUser.user.photoURL;
 
