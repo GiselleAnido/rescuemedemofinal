@@ -2,12 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import "../styles/UserProfileSettings.scss";
 import PetContext from "../context/petsContextProvider";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 
 axios.defaults.withCredentials = true;
 
 const UserProfileSettings = () => {
-  const { user, setUser } = useContext(PetContext);
+  const { user, setUser, fetchMe } = useContext(PetContext);
 
   const [photo, setPhoto] = useState(null); // store the photo in state
   const [uploading, setUploading] = useState(false);
@@ -16,6 +18,7 @@ const UserProfileSettings = () => {
   // track any errors that occur during uploading
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
+  const navigate = useNavigate();
   console.log(user);
   
   useEffect(() => {
@@ -69,6 +72,7 @@ const UserProfileSettings = () => {
     setNewEmail(e.target.value);
   };
 
+
   const handleSaveName = async (e) => {
     e.preventDefault();
     console.log(user)
@@ -85,6 +89,8 @@ const UserProfileSettings = () => {
         name: res.data.data.name,
       }));
       setNewName(res.data.data.name);
+      fetchMe();
+      navigate("/userprofile");
     } catch (err) {
       console.log(err);
     }
