@@ -29,9 +29,10 @@ const UserProfile = () => {
         const favoritePetResponses = await Promise.all(favoritePetRequests);
         const addedPetResponses = await Promise.all(addedPetRequests);
         const favoritePetData = favoritePetResponses.map(
-          (response) => response.data
+          (response) => response.data.data.pet
         );
         const addedPetData = addedPetResponses.map((response) => response.data.data.pet);
+        
         setFavoritePets(favoritePetData);
         setAddedPets(addedPetData);
         console.log(favoritePetData);

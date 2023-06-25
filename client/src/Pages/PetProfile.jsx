@@ -28,7 +28,6 @@ const PetProfile = () => {
     let pet = location.state;
 
 console.log(pet)
-  
 
   if (!pet) {
     return <div>Loading...</div>;
@@ -52,7 +51,8 @@ console.log(pet)
         <div className="pet-profile-data">
           <h2>
             <strong>
-              pet.name || pet.data.pet.name 
+              {pet.name.charAt(0).toUpperCase() +
+                pet.name.slice(1).toLowerCase()}
             </strong>
           </h2>
           <h4>Shelter</h4>
