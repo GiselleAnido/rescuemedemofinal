@@ -20,6 +20,8 @@ const UserProfile = () => {
         const userData = response.data;
         setFavorites(userData.favorites);
         setAddedPets(userData.addedPets);
+        console.log(response)
+        console.log(response.data)
       } catch (error) {
         console.log(error);
       }
