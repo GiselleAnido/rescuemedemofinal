@@ -11,31 +11,61 @@ const UserProfile = () => {
    const { user, loading } = useContext(PetContext);
    const [localUser, setLocalUser] = useState(user);
    const navigate = useNavigate();
+   const [favoritePets, setFavoritePets] = useState([]);
+   const [addedPets, setAddedPets] = useState([]);
 
-   useEffect(() => {
-     setLocalUser(user);
-   }, [user]);
-   console.log("user:", localUser);
-   console.log("loading:", loading);
 
-   const handleSettings = () => {
-     navigate("/userprofilesettings"); // Navigate to settings page
-   };
-   const handleAdoptionClick = () => {
-     navigate("/giveforadoption");
-   };
+  useEffect(() => {
+    const fetchPetData = async () => {
+      try {
+        const favorites = localUser?.favorites || [];
+        const addedPets = localUser?.pets || [];
+        const favoritePetRequests = favorites.map((id) =>
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`)
+        );
+        const addedPetRequests = addedPets.map((id) =>
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`)
+        );
+        const favoritePetResponses = await Promise.all(favoritePetRequests);
+        const addedPetResponses = await Promise.all(addedPetRequests);
+        const favoritePetData = favoritePetResponses.map(
+          (response) => response.data
+        );
+        const addedPetData = addedPetResponses.map((response) => response.data);
+        setFavoritePets(favoritePetData);
+        setAddedPets(addedPetData);
+        console.log(favoritePetData);
+        console.log(addedPetData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-   if (!localUser || loading) {
-     return <p>Loading user data...</p>;
-   }
+    fetchPetData();
+  }, [localUser]);
 
-   const addedPets = localUser?.pets || [];
-  const favorites = localUser?.favorites || [];
-  
+  useEffect(() => {
+    setLocalUser(user);
+  }, [user]);
+
+  const handleSettings = () => {
+    navigate("/userprofilesettings"); // Navigate to settings page
+  };
+
+  const handleAdoptionClick = () => {
+    navigate("/giveforadoption");
+  };
+
+  if (!localUser || loading) {
+    return <p>Loading user data...</p>;
+  }
+
+  const favorites = favoritePets || [];
   console.log(favorites)
-  console.log(addedPets)
-   // Check if user and photoURL are defined before accessing them
-   const userPhotoURL = localUser.user && localUser.user.photoURL;
+
+
+  // Check if user and photoURL are defined before accessing them
+  const userPhotoURL = localUser.user && localUser.user.photoURL;
 
   return (
     <div className="user-profile">
@@ -49,11 +79,9 @@ const UserProfile = () => {
             <div className="go-to-settings">
               <h1>{user.name}</h1>
               <h4 className="checkboxes-userprofile">
-                {" "}
-               {user.shelter ? <h4>Shelter</h4> : null}{" "}
+                {user.shelter ? <h4>Shelter</h4> : null}
               </h4>
               <h4 className="city-name capitalize checkboxes-userprofile">
-                {" "}
                 City: <h4>{user.city}</h4>
               </h4>
 
@@ -63,7 +91,6 @@ const UserProfile = () => {
                 onClick={handleSettings}
               >
                 Settings
-                {/* <BiEdit /> */}
               </Button>
             </div>
           </div>
@@ -100,7 +127,6 @@ const UserProfile = () => {
 
       <div className="give-for-adoption">
         <h4>Give for adoption</h4>
-
         <Button type="submit" className="btn_lgr" onClick={handleAdoptionClick}>
           Click here
         </Button>

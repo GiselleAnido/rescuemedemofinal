@@ -8,6 +8,7 @@ const {
   randomPets,
   deletePetPhoto,
   getPetsWithin,
+  
 } = require("./../controllers/petController");
 const { protect } = require("./../controllers/authController");
 
