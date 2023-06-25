@@ -62,7 +62,7 @@ const UserProfile = () => {
   }
 
   const favorites = favoritePets || [];
-  console.log(favorites)
+
 
 
   // Check if user and photoURL are defined before accessing them
