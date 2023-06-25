@@ -21,30 +21,13 @@ import axios from "axios";
 const PetProfile = () => {
 
 
-  const { state } = useLocation();
      const navigate = useNavigate();
 
 
-   const [pet, setPet] = useState(null);
+    let location = useLocation();
+    let pet = location.state;
 
-  useEffect(() => {
-    console.log("apicall");
-    const fetchPet = async () => {
-      try {
-        const response = await axios.get(
-          `https://rescuemebackend.onrender.com/api/pets/${location.state.pet._id}`
-        );
-        const pet = response.data.data.pet;
-        console.log(response);
-        console.log(pet);
-        setPet(pet);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    fetchPet();
-  }, [location.state.pet._id]);
 
   if (!pet) {
     return <div>Loading...</div>;

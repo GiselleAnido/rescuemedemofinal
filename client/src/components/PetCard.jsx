@@ -36,7 +36,7 @@ const PetCard = ({ pet, rdmpet }) => {
   };
 
   const handleCardClick = () => {
-    navigate("/petprofile", { state: { pet: displayPet } });
+    navigate("/petprofile", { state: displayPet });
   };
 
   const FavHandler = async (e) => {
