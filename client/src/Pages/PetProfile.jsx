@@ -34,7 +34,7 @@ const PetProfile = () => {
            `https://rescuemebackend.onrender.com/api/pets/${state.id}`
          );
          const pet = response.data.pet;
-
+console.log (response)
   console.log(pet);
          setPet(pet);
        } catch (error) {
