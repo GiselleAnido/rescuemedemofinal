@@ -31,7 +31,7 @@ const UserProfile = () => {
         const favoritePetData = favoritePetResponses.map(
           (response) => response.data
         );
-        const addedPetData = addedPetResponses.map((response) => response.data);
+        const addedPetData = addedPetResponses.map((response) => response.data.data.pet);
         setFavoritePets(favoritePetData);
         setAddedPets(addedPetData);
         console.log(favoritePetData);
