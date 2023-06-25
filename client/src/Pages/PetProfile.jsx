@@ -27,7 +27,8 @@ const PetProfile = () => {
 
    const [pet, setPet] = useState(null);
 
-   useEffect(() => {
+  useEffect(() => {
+     console.log("apicall")
      const fetchPet = async () => {
        try {
          const response = await axios.get(
