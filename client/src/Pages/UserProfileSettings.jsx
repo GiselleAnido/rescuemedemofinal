@@ -87,6 +87,12 @@ const UserProfileSettings = () => {
        name: res.data.data.name,
      }));
      setNewName(res.data.data.name);
+         const userRes = await axios.get(
+           "https://rescuemebackend.onrender.com/api/users/getMe",
+           { withCredentials: true }
+         );
+         const refreshedUser = userRes.data.data;
+         setUser(refreshedUser);
      console.log(user)
      navigate("/userprofile");
    } catch (err) {
