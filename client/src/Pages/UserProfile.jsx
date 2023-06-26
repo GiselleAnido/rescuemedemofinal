@@ -10,11 +10,11 @@ import axios from "axios";
 
 
 const UserProfile = () => {
-   const { user, loading } = useContext(PetContext);
+   const { user } = useContext(PetContext);
    const navigate = useNavigate();
    const [favoritePets, setFavoritePets] = useState([]);
    const [addedPets, setAddedPets] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   console.log(user);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const UserProfile = () => {
         
         setFavoritePets(favoritePetData);
         setAddedPets(addedPetData);
+         setLoading(false); 
 
         console.log(favoritePetData)
         console.log(addedPetData)
