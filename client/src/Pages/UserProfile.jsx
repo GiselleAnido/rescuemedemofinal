@@ -7,6 +7,8 @@ import PetContext from "../context/petsContextProvider";
 import PetCard from "../components/PetCard";
 import axios from "axios";
 
+
+
 const UserProfile = () => {
    const { user, loading } = useContext(PetContext);
    const [localUser, setLocalUser] = useState(user);
@@ -14,7 +16,8 @@ const UserProfile = () => {
    const [favoritePets, setFavoritePets] = useState([]);
    const [addedPets, setAddedPets] = useState([]);
 
-
+  console.log(user);
+  console.log(localUser)
   useEffect(() => {
     const fetchPetData = async () => {
       try {
