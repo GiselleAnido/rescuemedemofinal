@@ -87,6 +87,7 @@ const UserProfileSettings = () => {
        name: res.data.data.name,
      }));
      setNewName(res.data.data.name);
+     console.log(user)
      navigate("/userprofile");
    } catch (err) {
      console.log(err);
