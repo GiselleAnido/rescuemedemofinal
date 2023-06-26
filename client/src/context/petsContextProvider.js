@@ -78,7 +78,7 @@ export const PetContextProvider = ({ children }) => {
         }
       );
 
-      console.log("Fetch Me", res.data.data.user);
+      console.log("Fetch Me", res.data.data);
       setUser(res.data.data.user);
       // if you want to set favourites based on the user and update just favourites in the pet card component
       handleLogin();
