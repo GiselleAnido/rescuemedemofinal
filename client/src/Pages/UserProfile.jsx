@@ -38,6 +38,9 @@ const UserProfile = () => {
         
         setFavoritePets(favoritePetData);
         setAddedPets(addedPetData);
+
+        console.log(favoritePetData)
+        console.log(addedPetData)
         
       } catch (error) {
         console.error(error);
