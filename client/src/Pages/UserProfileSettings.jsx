@@ -87,11 +87,11 @@ const UserProfileSettings = () => {
        name: res.data.data.name,
      }));
      setNewName(res.data.data.name);
-        fetchMe()
+      
    
      navigate("/userprofile");
    } catch (err) {
-     console.log(err);
+     console.log(err.response);
    }
   };
 
