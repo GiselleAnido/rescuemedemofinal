@@ -45,36 +45,31 @@ const PetCard = ({ pet, rdmpet }) => {
     console.log(displayPet._id)
     if (!favorite) {
       e.stopPropagation();
-         try {
-           const response = await axios.post(
-             "https://rescuemebackend.onrender.com/api/users/favorites",
-             {
-               petId: displayPet._id,
-             }
-           );
-           setUser((prevUser) => ({
-             ...prevUser,
-             favorites: response.data.data.favorites,
-           }));
-           setFavorite(true);
-         } catch (error) {
-           console.error(error);
-         }
+      try {
+        const response = await axios.post(
+          "https://rescuemebackend.onrender.com/api/users/favorites",
+          {
+            petId: displayPet._id,
+          }
+        );
+        console.log(response)
+        setUser(response.data);
+        setFavorite(true);
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       try {
-      const res = await axios.delete(
-        "https://rescuemebackend.onrender.com/api/users/favorites",
-        {
-          data: {
-            petId: displayPet._id,
-          },
-        }
-      );
-      setUser((prevUser) => ({
-        ...prevUser,
-        favorites: res.data.data.favorites,
-      }));
-      setFavorite(false);
+        const res = await axios.delete(
+          "https://rescuemebackend.onrender.com/api/users/favorites",
+          {
+            data: {
+              petId: displayPet._id,
+            },
+          }
+        );
+        setUser(res.data);
+        setFavorite(false);
       } catch (error) {
         console.error(error);
       }

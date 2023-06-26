@@ -149,12 +149,7 @@ export const PetContextProvider = ({ children }) => {
         { withCredentials: true },
         { name: newName, email: newEmail }
       );
-  const updateUser = (newUser) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      ...newUser,
-    }));
-  };
+      setUser(res.data.data.user);
       return true;
     } catch (err) {
       console.log(err);
