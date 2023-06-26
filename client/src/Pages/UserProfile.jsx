@@ -10,59 +10,49 @@ import axios from "axios";
 
 
 const UserProfile = () => {
-   const [user, setUser] = useState(null);
+   const { user } = useContext(PetContext);
    const navigate = useNavigate();
    const [favoritePets, setFavoritePets] = useState([]);
    const [addedPets, setAddedPets] = useState([]);
   const [loading, setLoading] = useState(true);
   console.log(user);
 
-   useEffect(() => {
-     const fetchPetData = async () => {
-       try {
-         setLoading(true);
+  useEffect(() => {
+    const fetchPetData = async () => {
+      try {
+        const favorites = user?.favorites || [];
+        const addedPets = user?.pets || [];
+        const favoritePetRequests = favorites.map((id) =>
+          axios.get(
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
+          )
+        );
+        const addedPetRequests = addedPets.map((id) =>
+          axios.get(
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
+          )
+        );
+        const favoritePetResponses = await Promise.all(favoritePetRequests);
+        const addedPetResponses = await Promise.all(addedPetRequests);
+        const favoritePetData = favoritePetResponses.map(
+          (response) => response.data.data.pet
+        );
+        const addedPetData = addedPetResponses.map((response) => response.data.data.pet);
+        
+        setFavoritePets(favoritePetData);
+        setAddedPets(addedPetData);
+         setLoading(false); 
 
-         // Fetch user data
-         const response = await axios.get(
-           "https://rescuemebackend.onrender.com/api/users/getMe"
-         );
-         const userData = response.data.data.user;
-         setUser(userData);
+        console.log(favoritePetData)
+        console.log(addedPetData)
+        
+      } catch (error) {
+        console.error(error.response);
+      }
+    };
 
-         // Fetch favorite pets data
-         const favorites = userData.favorites || [];
-         const favoritePetRequests = favorites.map((id) =>
-           axios.get(
-             `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
-           )
-         );
-         const favoritePetResponses = await Promise.all(favoritePetRequests);
-         const favoritePetData = favoritePetResponses.map(
-           (response) => response.data.data.pet
-         );
-         setFavoritePets(favoritePetData);
-
-         // Fetch added pets data
-         const addedPets = userData.pets || [];
-         const addedPetRequests = addedPets.map((id) =>
-           axios.get(
-             `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
-           )
-         );
-         const addedPetResponses = await Promise.all(addedPetRequests);
-         const addedPetData = addedPetResponses.map(
-           (response) => response.data.data.pet
-         );
-         setAddedPets(addedPetData);
-       } catch (error) {
-         console.error(error);
-       } finally {
-         setLoading(false);
-       }
-     };
-
-     fetchPetData();
-   }, []);
+    fetchPetData();
+  }, [user]);
 
 
 
