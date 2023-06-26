@@ -17,7 +17,7 @@ const UserProfile = () => {
    const [addedPets, setAddedPets] = useState([]);
 
   console.log(user);
-  console.log(localUser)
+
   useEffect(() => {
     const fetchPetData = async () => {
       try {
@@ -47,7 +47,7 @@ const UserProfile = () => {
         console.log(addedPetData)
         
       } catch (error) {
-        console.error(error);
+        console.error(error.response);
       }
     };
 
@@ -77,7 +77,6 @@ const UserProfile = () => {
   // Check if user and photoURL are defined before accessing them
   const userPhotoURL = localUser.user && localUser.user.photoURL;
 
-  console.log (user)
 
   return (
     <div className="user-profile">
