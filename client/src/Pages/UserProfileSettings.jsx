@@ -81,14 +81,14 @@ const UserProfileSettings = () => {
        { name: newName },
        { withCredentials: true }
      );
-     console.log(res.data.data);
+  
      setUser((prevUser) => ({
        ...prevUser,
        name: res.data.data.name,
      }));
      setNewName(res.data.data.name);
         fetchMe()
-     console.log(user)
+   
      navigate("/userprofile");
    } catch (err) {
      console.log(err);
@@ -105,8 +105,14 @@ const UserProfileSettings = () => {
           email: newEmail,
         }
       );
-      setUser(res.data.data);
-      setNewEmail("");
+        setUser((prevUser) => ({
+          ...prevUser,
+          email: res.data.data.email,
+        }));
+        setNewEmail(res.data.data.email);
+        fetchMe();
+
+        navigate("/userprofile");
     } catch (err) {
       console.log(err);
     }
