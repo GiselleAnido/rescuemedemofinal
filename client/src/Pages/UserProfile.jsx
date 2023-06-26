@@ -11,7 +11,6 @@ import axios from "axios";
 
 const UserProfile = () => {
    const { user, loading } = useContext(PetContext);
-   const [localUser, setLocalUser] = useState(user);
    const navigate = useNavigate();
    const [favoritePets, setFavoritePets] = useState([]);
    const [addedPets, setAddedPets] = useState([]);
@@ -21,8 +20,8 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPetData = async () => {
       try {
-        const favorites = localUser?.favorites || [];
-        const addedPets = localUser?.pets || [];
+        const favorites = user?.favorites || [];
+        const addedPets = user?.pets || [];
         const favoritePetRequests = favorites.map((id) =>
           axios.get(
             `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
@@ -52,11 +51,9 @@ const UserProfile = () => {
     };
 
     fetchPetData();
-  }, [localUser]);
-
-  useEffect(() => {
-    setLocalUser(user);
   }, [user]);
+
+
 
   const handleSettings = () => {
     navigate("/userprofilesettings"); // Navigate to settings page
@@ -66,7 +63,7 @@ const UserProfile = () => {
     navigate("/giveforadoption");
   };
 
-  if (!localUser || loading) {
+  if (!user || loading) {
     return <p>Loading user data...</p>;
   }
 
@@ -75,7 +72,7 @@ const UserProfile = () => {
 
 
   // Check if user and photoURL are defined before accessing them
-  const userPhotoURL = localUser.user && localUser.user.photoURL;
+  const userPhotoURL = user.user && user.user.photoURL;
 
 
   return (
