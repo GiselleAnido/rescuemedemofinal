@@ -24,10 +24,14 @@ const UserProfile = () => {
         const favorites = localUser?.favorites || [];
         const addedPets = localUser?.pets || [];
         const favoritePetRequests = favorites.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`)
+          axios.get(
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
+          )
         );
         const addedPetRequests = addedPets.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`)
+          axios.get(
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
+          )
         );
         const favoritePetResponses = await Promise.all(favoritePetRequests);
         const addedPetResponses = await Promise.all(addedPetRequests);
