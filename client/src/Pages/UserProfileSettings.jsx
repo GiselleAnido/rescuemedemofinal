@@ -84,9 +84,9 @@ const UserProfileSettings = () => {
   
      setUser((prevUser) => ({
        ...prevUser,
-       name: res.data.data.name,
+       name: newName,
      }));
-     setNewName(res.data.data.name);
+     
       
    
      navigate("/userprofile");
