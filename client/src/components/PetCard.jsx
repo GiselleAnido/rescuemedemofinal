@@ -53,7 +53,7 @@ const PetCard = ({ pet, rdmpet }) => {
           }
         );
         console.log(response)
-        setUser(response.data);
+        setUser(response.data.user);
         setFavorite(true);
       } catch (error) {
         console.error(error);
