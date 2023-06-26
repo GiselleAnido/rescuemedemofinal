@@ -149,7 +149,7 @@ export const PetContextProvider = ({ children }) => {
         { withCredentials: true },
         { name: newName, email: newEmail }
       );
-      setUser(res.data.data);
+      setUser(res.data.data.user);
       return true;
     } catch (err) {
       console.log(err);
