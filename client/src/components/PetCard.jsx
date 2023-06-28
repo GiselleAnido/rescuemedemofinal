@@ -43,6 +43,7 @@ const PetCard = ({ pet, rdmpet }) => {
     console.log(user)
     console.log(pet)
     console.log(displayPet._id)
+    console.log(user._id)
     if (!favorite) {
       e.stopPropagation();
       try {
