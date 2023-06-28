@@ -67,7 +67,7 @@ exports.login = async (req, res, next) => {
    ),
    httpOnly: true,
    secure:true,
-   sameSite: "None",
+   sameSite: "Lax",
  });
 
     res.status(200).json({
