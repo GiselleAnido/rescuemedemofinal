@@ -22,9 +22,7 @@ exports.favPets = async (req, res, next) => {
     if (!pet) {
       return res.status(404).send("Pet not found");
     }
-    console.log(user)
-    console.log(user._id)
-    console.log(req.user._id)
+    
     // Add the pet to the user's favorites array
     const user = await User.findByIdAndUpdate(
       userId,
