@@ -50,6 +50,7 @@ const PetCard = ({ pet, rdmpet }) => {
           "https://rescuemebackend.onrender.com/api/users/favorites",
           {
             petId: displayPet._id,
+            withCredentials:true
           }
         );
         console.log(response)
@@ -65,6 +66,7 @@ const PetCard = ({ pet, rdmpet }) => {
           {
             data: {
               petId: displayPet._id,
+              withCredentials: true,
             },
           }
         );
