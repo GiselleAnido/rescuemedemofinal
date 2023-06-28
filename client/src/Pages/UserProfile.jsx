@@ -24,12 +24,15 @@ const UserProfile = () => {
         const addedPets = user?.pets || [];
         const favoritePetRequests = favorites.map((id) =>
           axios.get(
-            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`,
+
+           { withCredentials:true}
           )
         );
         const addedPetRequests = addedPets.map((id) =>
           axios.get(
-            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`,
+            { withCredentials: true }
           )
         );
         const favoritePetResponses = await Promise.all(favoritePetRequests);
