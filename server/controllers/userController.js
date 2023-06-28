@@ -62,7 +62,7 @@ exports.getMe = async (req, res, next) => {
          path: "pets",
          select: "-__v",
        });
- console.log(user);
+ console.log("user",user);
 
  console.log(req.user._id);
      res.status(200).json({
