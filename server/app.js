@@ -48,6 +48,13 @@ mongoose.connection
   .once("error", console.error)
   .once("open", () => console.log("Database connection established"));
 
+// Clear Cache middleware
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
+  next();
+});
+
+
 //ROUTES
 
 app.use("/api/pets", petRouter);
