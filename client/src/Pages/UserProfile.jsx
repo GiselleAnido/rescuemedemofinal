@@ -20,7 +20,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPetData = async () => {
       try {
-        fetchMe();
+        
         const favorites = user?.favorites || [];
         const addedPets = user?.pets || [];
        console.log(user)
