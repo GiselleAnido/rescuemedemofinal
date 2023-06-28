@@ -10,7 +10,7 @@ import axios from "axios";
 
 
 const UserProfile = () => {
-   const { user } = useContext(PetContext);
+   const { user , fetchMe} = useContext(PetContext);
    const navigate = useNavigate();
    const [favoritePets, setFavoritePets] = useState([]);
    const [addedPets, setAddedPets] = useState([]);
@@ -20,13 +20,13 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPetData = async () => {
       try {
+        fetchMe();
         const favorites = user?.favorites || [];
         const addedPets = user?.pets || [];
-        console.log(user.pets)
-        const petId= user.pets._id
+       console.log(user)
         const favoritePetRequests = favorites.map((id) =>
           axios.get(
-            `https://rescuemebackend.onrender.com/api/pets/${petId}`,
+            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`,
 
            { withCredentials:true}
           )

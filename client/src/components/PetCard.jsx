@@ -6,7 +6,7 @@ import axios from "axios";
 
 const PetCard = ({ pet, rdmpet }) => {
   const displayPet = rdmpet || pet;
-  const { user, setUser } = useContext(PetContext);
+  const { user, setUser, fetchMe } = useContext(PetContext);
   const navigate = useNavigate();
   const [favorite, setFavorite] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,6 +58,7 @@ const PetCard = ({ pet, rdmpet }) => {
         console.log(response)
         setUser(response.data.user);
         setFavorite(true);
+       
       } catch (error) {
         console.error(error);
       }
