@@ -22,9 +22,11 @@ const UserProfile = () => {
       try {
         const favorites = user?.favorites || [];
         const addedPets = user?.pets || [];
+        console.log(user.pets)
+        const petId= user.pets._id
         const favoritePetRequests = favorites.map((id) =>
           axios.get(
-            `https://rescuemebackend.onrender.com/api/pets/${id.toString()}`,
+            `https://rescuemebackend.onrender.com/api/pets/${petId}`,
 
            { withCredentials:true}
           )
