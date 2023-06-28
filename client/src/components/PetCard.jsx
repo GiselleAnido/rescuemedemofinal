@@ -51,7 +51,8 @@ const PetCard = ({ pet, rdmpet }) => {
           "https://rescuemebackend.onrender.com/api/users/favorites",
           {
             petId: displayPet._id,
-            withCredentials:true
+            withCredentials: true,
+            userId: user._id
           }
         );
         console.log(response)

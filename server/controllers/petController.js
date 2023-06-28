@@ -15,16 +15,19 @@ cloudinary.config({
 exports.favPets = async (req, res, next) => {
   try {
     const { petId } = req.body;
+    const { userId } = req.body;
 
     // Check if the pet exists
     const pet = await Pet.findById(petId);
     if (!pet) {
       return res.status(404).send("Pet not found");
     }
-
+    console.log(user)
+    console.log(user._id)
+    console.log(req.user._id)
     // Add the pet to the user's favorites array
     const user = await User.findByIdAndUpdate(
-      req.user._id,
+      userId,
       { $addToSet: { favorites: petId } },
       { new: true }
     )
