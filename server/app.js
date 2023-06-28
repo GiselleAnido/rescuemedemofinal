@@ -51,6 +51,13 @@ mongoose.connection
 // Clear Cache middleware
 app.use((req, res, next) => {
   res.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
+
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
+    });
+  
   next();
 });
 
