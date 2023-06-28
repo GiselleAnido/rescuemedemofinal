@@ -18,14 +18,14 @@ router.route("/random").get(randomPets, getAllPets);
 
 router.route("/pets-within/:distance/center/:latlng/unit/:unit").get(getPetsWithin)
 
-router.route("/").get(getAllPets).post(protect, createPet);
+router.route("/").get(getAllPets).post(createPet);
 
-router.delete("/:id/photo", protect, deletePetPhoto);
+router.delete("/:id/photo",  deletePetPhoto);
 
 router
   .route("/:id")
   .get(getPet)
-  .patch(protect, updatePet)
-  .delete(protect, deletePet);
+  .patch( updatePet)
+  .delete(deletePet);
 
 module.exports = router;

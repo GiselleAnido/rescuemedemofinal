@@ -31,7 +31,7 @@ router.route("/logout").get(logout);
 
 router.patch("/updateMyPassword", protect, updatePassword);
 
-router.get("/getMe", protect, getMe);
+router.get("/getMe", getMe);
 router.patch("/updateMe", protect, updateMe);
 router.delete("/deleteMe", protect, deleteMe);
 
@@ -44,8 +44,8 @@ router.route("/").get(getAllUsers).post(createUser);
 
 router
   .route("/favorites")
-  .post(protect, favPets)
-  .delete(protect, removeFavoritePet);
+  .post( favPets)
+  .delete(removeFavoritePet);
 
 router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
 
