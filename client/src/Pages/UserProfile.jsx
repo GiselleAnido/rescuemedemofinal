@@ -22,7 +22,8 @@ useEffect(() => {
     try {
       const res = await axios.get(
         "https://rescuemebackend.onrender.com/api/users/getMe",
-        {
+
+        {userId : user._id,
           withCredentials: true,
         }
       );

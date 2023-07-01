@@ -52,8 +52,10 @@ exports.getUser = async (req, res) => {
 
 exports.getMe = async (req, res, next) => {
   try {
+
+    userId= req.body
    
-     const user = await User.findById(req.user._id)
+     const user = await User.findById(userId)
        .populate({
          path: "favorites",
          select: "-__v -createdAt",
