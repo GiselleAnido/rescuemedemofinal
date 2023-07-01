@@ -32,10 +32,12 @@ const PetCard = ({ pet, rdmpet }) => {
             userId: user._id,
           }
         );
-        setUser(response.data.user);
+        setUser((prevUser) => ({
+          ...prevUser,
+          favorites: [...prevUser.favorites, displayPet._id],
+        }));
         setFavorite(true);
-        console.log(user)
-        console.log(setUser)
+        
       } else {
         const res = await axios.delete(
           "https://rescuemebackend.onrender.com/api/users/favorites",
@@ -46,8 +48,13 @@ const PetCard = ({ pet, rdmpet }) => {
             },
           }
         );
-        setUser(res.data);
-        setFavorite(false);
+            setUser((prevUser) => ({
+              ...prevUser,
+              favorites: prevUser.favorites.filter(
+                (id) => id !== displayPet._id
+              ),
+            }));
+            setFavorite(false);
       }
     } catch (error) {
       console.error(error);
