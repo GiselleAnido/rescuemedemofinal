@@ -8,13 +8,15 @@ import PetCard from "../components/PetCard";
 import axios from "axios";
 
 const UserProfile = () => {
-  const { user, pet } = useContext(PetContext);
+  const { user, pet, fetchMe } = useContext(PetContext);
   const navigate = useNavigate();
   const [favoritePets, setFavoritePets] = useState([]);
   const [addedPets, setAddedPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
+  console.log(user)
+  fetchMe()
+  console.log(user)
 
   useEffect(() => {
     const fetchPetData = async () => {

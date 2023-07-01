@@ -34,6 +34,8 @@ const PetCard = ({ pet, rdmpet }) => {
         );
         setUser(response.data.user);
         setFavorite(true);
+        console.log(user)
+        console.log(setUser)
       } else {
         const res = await axios.delete(
           "https://rescuemebackend.onrender.com/api/users/favorites",
