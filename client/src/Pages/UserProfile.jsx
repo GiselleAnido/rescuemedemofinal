@@ -8,25 +8,28 @@ import PetCard from "../components/PetCard";
 import axios from "axios";
 
 const UserProfile = () => {
-  const { user } = useContext(PetContext);
+  const { user, pet } = useContext(PetContext);
   const navigate = useNavigate();
   const [favoritePets, setFavoritePets] = useState([]);
   const [addedPets, setAddedPets] = useState([]);
   const [loading, setLoading] = useState(true);
+
+
 
   useEffect(() => {
     const fetchPetData = async () => {
       try {
         const favorites = user?.favorites || [];
         const addedPets = user?.pets || [];
+        const petId = pet._id
 
         const favoritePetRequests = favorites.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${petId}`, {
             withCredentials: true,
           })
         );
         const addedPetRequests = addedPets.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${petId}`, {
             withCredentials: true,
           })
         );
