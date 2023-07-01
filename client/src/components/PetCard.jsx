@@ -28,14 +28,14 @@ const PetCard = ({ pet, rdmpet }) => {
           "https://rescuemebackend.onrender.com/api/users/favorites",
           {
             petId: displayPet._id,
-            withCredentials: true,
-            userId: user._id,
-          }
+            userId: user.user._id, // Use `user.user._id` instead of `user._id`
+          },
+          { withCredentials: true } // Move `withCredentials` to the third argument of `axios.post`
         );
         setUser(response.data.user);
         setFavorite(true);
-        console.log(user)
-        console.log(setUser)
+        console.log(user);
+        console.log(setUser);
       } else {
         const res = await axios.delete(
           "https://rescuemebackend.onrender.com/api/users/favorites",
