@@ -23,13 +23,13 @@ const UserProfile = () => {
         const addedPets = user?.pets || [];
         const petId = pet._id
 
-        const favoritePetRequests = favorites.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${petId}`, {
+        const favoritePetRequests = favorites.map((_id) =>
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${_id}`, {
             withCredentials: true,
           })
         );
-        const addedPetRequests = addedPets.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${petId}`, {
+        const addedPetRequests = addedPets.map((_id) =>
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${_id}`, {
             withCredentials: true,
           })
         );
