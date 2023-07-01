@@ -21,15 +21,15 @@ const UserProfile = () => {
       try {
         const favorites = user?.favorites || [];
         const addedPets = user?.pets || [];
-        const petId = pet._id
+       console.log(user)
 
-        const favoritePetRequests = favorites.map((_id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${_id}`, {
+        const favoritePetRequests = favorites.map((id) =>
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
             withCredentials: true,
           })
         );
-        const addedPetRequests = addedPets.map((_id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${_id}`, {
+        const addedPetRequests = addedPets.map((id) =>
+          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
             withCredentials: true,
           })
         );
