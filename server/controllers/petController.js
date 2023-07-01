@@ -47,6 +47,7 @@ exports.favPets = async (req, res, next) => {
 exports.removeFavoritePet = async (req, res, next) => {
   try {
     const { petId } = req.body;
+    const { userId } = req.body;
     console.log(req.body);
     console.log(petId);
 
@@ -58,7 +59,7 @@ exports.removeFavoritePet = async (req, res, next) => {
 
     // Remove the pet from the user's favorites array
     const user = await User.findByIdAndUpdate(
-      req.user._id,
+      userId,
       { $pull: { favorites: petId } },
       { new: true }
     )
