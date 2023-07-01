@@ -15,8 +15,7 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
 
   console.log(user)
-  fetchMe()
-  console.log(user)
+ 
 
   useEffect(() => {
     const fetchPetData = async () => {
