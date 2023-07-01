@@ -32,11 +32,9 @@ const PetCard = ({ pet, rdmpet }) => {
             userId: user._id,
           }
         );
-        setUser((prevUser) => ({
-          ...prevUser,
-          favorites: [...prevUser.favorites, displayPet._id],
-        }));
+        setUser(response.data.user);
         setFavorite(true);
+        console.log(user)
         
       } else {
         const res = await axios.delete(
@@ -48,13 +46,8 @@ const PetCard = ({ pet, rdmpet }) => {
             },
           }
         );
-            setUser((prevUser) => ({
-              ...prevUser,
-              favorites: prevUser.favorites.filter(
-                (id) => id !== displayPet._id
-              ),
-            }));
-            setFavorite(false);
+        setUser(res.data);
+        setFavorite(false);
       }
     } catch (error) {
       console.error(error);
