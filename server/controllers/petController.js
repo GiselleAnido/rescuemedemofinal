@@ -153,7 +153,8 @@ exports.createPet = async (req, res, next) => {
       { $addToSet: { pets: newPet._id } },
       { new: true }
     );
-
+    console.log("user after update:", user);
+    
     res.status(201).json({
       status: "success",
       data: { pet: newPet },
