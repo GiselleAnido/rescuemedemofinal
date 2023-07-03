@@ -113,12 +113,6 @@ console.log(pets);
 exports.getPet = async (req, res, next) => {
   try {
 
- const { petId } = req.params.id;
-
- // Check if the petId is a valid ObjectId
- if (!mongoose.Types.ObjectId.isValid(petId)) {
-   return res.status(400).json({ message: "Invalid petId" });
- }
 
 
     const pet = await Pet.findById(req.params.id).populate("user");
