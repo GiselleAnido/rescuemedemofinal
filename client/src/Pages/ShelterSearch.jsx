@@ -12,7 +12,7 @@ const ShelterSearch = () => {
     event.preventDefault();
     try {
       const response = await axios.get(
-        `https://rescuemebackend.onrender.com/api/shelters?city=${city}`
+        `https://rescuemebackend.onrender.com/api/users/shelters?city=${city}`
       );
 
       setShelters(response.data.data.shelters);
