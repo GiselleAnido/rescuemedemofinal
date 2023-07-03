@@ -69,6 +69,8 @@ const UserProfile = () => {
   }
 
   const favorites = favoritePets || [];
+  console.log(pet)
+  console.log(favorites)
   const userPhotoURL = user.user && user.user.photoURL;
 
   return (
