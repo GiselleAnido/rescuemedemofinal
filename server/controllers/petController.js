@@ -132,6 +132,8 @@ exports.createPet = async (req, res, next) => {
     let photoURL = null;
     console.log(req.body.photo);
 
+    const { userId } = req.body;
+
     if (req.body.photo) {
       const result = await cloudinary.uploader.upload(req.body.photo, {
         public_id: uuidv4(),
@@ -143,11 +145,11 @@ exports.createPet = async (req, res, next) => {
     const newPet = await Pet.create({
       ...req.body,
       photoURL,
-      user: req.user._id,
+      user: userId,
     });
 
     await User.findByIdAndUpdate(
-      req.user._id,
+      userId,
       { $addToSet: { pets: newPet._id } },
       { new: true }
     );
@@ -159,7 +161,7 @@ exports.createPet = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-   fetchData();
+   
 };
 
 exports.updatePet = async (req, res, next) => {

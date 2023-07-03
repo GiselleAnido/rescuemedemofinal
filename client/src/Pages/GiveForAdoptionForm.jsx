@@ -75,13 +75,13 @@ const GiveForAdoptionForm = () => {
   const handleSubmitGiveForAdoptionForm = async (event) => {
     event.preventDefault();
     setLoading(true);
-console.log("heee")
+
     try {
       console.log(user._id)
       const response = await axios.post(
         "https://rescuemebackend.onrender.com/api/pets/",
         {
-          user: user._id,
+          userId: user._id,
           vaccinated,
           sterilized,
           name,
