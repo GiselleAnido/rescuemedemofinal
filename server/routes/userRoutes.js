@@ -32,12 +32,12 @@ router.route("/logout").get(logout);
 router.patch("/updateMyPassword", protect, updatePassword);
 
 router.get("/getMe", getMe);
-router.patch("/updateMe", protect, updateMe);
-router.delete("/deleteMe", protect, deleteMe);
+router.patch("/updateMe",  updateMe);
+router.delete("/deleteMe", deleteMe);
 
 router.get("/shelters", getShelters);
 
-router.delete("/deleteUserPhoto", protect, deleteUserPhoto);
+router.delete("/deleteUserPhoto",  deleteUserPhoto);
 
 router.route("/").get(getAllUsers).post(createUser);
 

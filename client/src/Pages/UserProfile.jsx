@@ -34,6 +34,8 @@ const UserProfile = () => {
             withCredentials: true,
           })
         );
+
+        console.log("heey")
         const favoritePetResponses = await Promise.all(favoritePetRequests);
         const addedPetResponses = await Promise.all(addedPetRequests);
         const favoritePetData = favoritePetResponses.map(
