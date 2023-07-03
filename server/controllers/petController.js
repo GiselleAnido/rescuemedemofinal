@@ -3,6 +3,7 @@ const User = require("./../models/userModel");
 const APIQueries = require("./../utils/APIQueries");
 const cloudinary = require("cloudinary").v2;
 const { v4: uuidv4 } = require("uuid");
+const mongoose = require("mongoose");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -111,6 +112,15 @@ console.log(pets);
 
 exports.getPet = async (req, res, next) => {
   try {
+
+ const { petId } = req.params.id;
+
+ // Check if the petId is a valid ObjectId
+ if (!mongoose.Types.ObjectId.isValid(petId)) {
+   return res.status(400).json({ message: "Invalid petId" });
+ }
+
+
     const pet = await Pet.findById(req.params.id).populate("user");
 
     res.status(200).json({

@@ -24,11 +24,15 @@ const UserProfile = () => {
         const addedPets = user?.pets || [];
        console.log(user)
 
-        const favoritePetRequests = favorites.map((id) =>
-          axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
-            withCredentials: true,
-          })
-        );
+             // Extract the pet IDs from the favorites array
+      const favoritePetIds = favorites.map((favorite) =>
+        typeof favorite === "string" ? favorite : favorite._id
+      );
+
+      const favoritePetRequests = favoritePetIds.map((id) =>
+        axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
+          withCredentials: true,
+        }) )
         const addedPetRequests = addedPets.map((id) =>
           axios.get(`https://rescuemebackend.onrender.com/api/pets/${id}`, {
             withCredentials: true,
