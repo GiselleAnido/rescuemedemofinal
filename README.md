@@ -31,7 +31,10 @@ Thank you for your interest in RescueMeDemoFinal! Let's work together to make a 
 
 # Contributors and Contacts
 Sorina - https://github.com/verdeverzi
+
 Lia - https://github.com/LiaGrozav
+
 Elaine - https://github.com/elainealso
+
 
 And myself! :)
