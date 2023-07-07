@@ -102,7 +102,7 @@ exports.updateMe = async (req, res, next) => {
 
     // 3) Update user document
     const updatedUser = await User.findByIdAndUpdate(
-      req.user.id,
+      req.user._id,
     
       { ...req.body, photoURL },
       {

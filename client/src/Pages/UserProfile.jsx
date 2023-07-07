@@ -73,7 +73,7 @@ const UserProfile = () => {
   }
 
   const favorites = favoritePets || [];
-  console.log(pet)
+ 
   console.log(addedPets)
   const userPhotoURL = user.user && user.user.photoURL;
 
