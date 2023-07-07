@@ -97,6 +97,20 @@ const GiveForAdoptionForm = () => {
           photo: photoURL,
         },
         { withCredentials: true },
+        console.log(     user._id,
+          vaccinated,
+          sterilized,
+          name,
+          type,
+          breed,
+          age,
+          size,
+          gender,
+          color,
+          city,
+          goodWith,
+          description,
+           photoURL)
         
       );
       console.log(response);
