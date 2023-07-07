@@ -10,10 +10,15 @@ Backend: Node.js, MongoDB, Mongoose
 To get started with the project, visit  https://rescuemedemofinal.vercel.app/ or follow the steps below:
 
 -Clone this repository to your local machine using git clone https://github.com/GiselleAnido/rescuemedemofinal.git.
+
 -Navigate to the project directory: cd rescuemedemofinal.
+
 -Install the required dependencies by running npm install.
+
 -Set up a MongoDB database and update the MongoDB connection string in the backend configuration file.
+
 -Start the development server by running npm start in the project root directory.
+
 -Open your browser and visit http://localhost:3000 to see the application running.
 
 # Contributing
