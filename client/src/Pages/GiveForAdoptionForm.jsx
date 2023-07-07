@@ -120,7 +120,7 @@ const GiveForAdoptionForm = () => {
         alert(
           "Thank you for your trust! We hope to find a home for your pet soon!"
         );
-        updateMe();
+        fetchMe();
         navigate("/userprofile");
       } else {
         setLoading(false);
