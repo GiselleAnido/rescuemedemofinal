@@ -5,7 +5,8 @@ Welcome to the RescueMeDemoFinal project! This repository contains the code for 
  # Technologies Used
 Frontend: HTML, CSS, Bootstrap, React, Sass, Framer Motion
 Backend: Node.js, MongoDB, Mongoose
-Getting Started
+
+# Getting Started
 To get started with the project, visit  https://rescuemedemofinal.vercel.app/ or follow the steps below:
 
 -Clone this repository to your local machine using git clone https://github.com/GiselleAnido/rescuemedemofinal.git.
