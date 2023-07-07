@@ -147,7 +147,7 @@ export const PetContextProvider = ({ children }) => {
       const res = await axios.patch(
         "https://rescuemebackend.onrender.com/api/users/updateMe",
         { withCredentials: true },
-        { name: newName, email: newEmail }
+        { name: newName, email: newEmail , userId: user._id}
       );
       setUser(res.data.data.user);
       return true;

@@ -78,6 +78,7 @@ exports.getMe = async (req, res, next) => {
 
 exports.updateMe = async (req, res, next) => {
   try {
+     const { userId } = req.body;
 
     let photoURL = null;
 
@@ -102,7 +103,7 @@ exports.updateMe = async (req, res, next) => {
 
     // 3) Update user document
     const updatedUser = await User.findByIdAndUpdate(
-      req.user._id,
+      userId,
     
       { ...req.body, photoURL },
       {
